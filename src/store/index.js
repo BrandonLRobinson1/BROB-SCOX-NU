@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleWare, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import dummyStore from './dummyStore';
 
@@ -8,5 +8,5 @@ const rootReducer = combineReducers({
 
 export const store = createStore(
   rootReducer,
-  compose(applyMiddleWare(thunk), window.devToolsExtension ? window.devToolsExtension() : f => f)
+  compose(applyMiddleware(thunk), window.devToolsExtension ? window.devToolsExtension() : f => f)
 );
