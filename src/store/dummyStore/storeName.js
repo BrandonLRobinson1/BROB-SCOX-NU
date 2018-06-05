@@ -23,3 +23,16 @@ export const someAsyncT = () => (dispatch, getState) => {
     resolve();
   });
 }
+
+
+// How to pull real time data from firebase
+// export const employeesFetch = () => {
+//   const { currentUser } = firebase.auth();
+//   return (dispatch) => {
+//     firebase.database().ref(`/users/${currentUser.uid}/employees`)
+//       .on('value', snapshot => {
+//         console.log('cha ching ... payload', snapshot)
+//         dispatch({ type: EMPLOYEES_FETCH_SUCCESS, payload: snapshot.val() })
+//       })
+//   }
+// }
