@@ -5,17 +5,17 @@ import { Button, CardSection, Card } from '../common';
 export default class GetCredentials extends Component {
 
   render () {
-    const { container, section1, section2, buttonSection, buttonPadding, buttonPlacement } = styles;
+    const { container, section1, section2, buttonSection, buttonPadding, buttonPlacement, textStyle } = styles;
 
     return (
       <View style={container}>
 
         <View style={section1}>
-         <Text>yo</Text>
+         <Text style={textStyle}>fill in later</Text>
         </View>
 
         <View style={section2}>
-         <Text>yo</Text>
+         <Text style={textStyle}>fill in later</Text>
         </View>
 
         <View style={buttonSection}>
@@ -24,11 +24,17 @@ export default class GetCredentials extends Component {
           
           <View style={buttonPlacement}>
             <CardSection>
-              <Button />
-            </ CardSection>
+              <Button
+                buttonText="Log In"
+                onPress={() => {}}
+              />
+            </CardSection>
             <CardSection>
-              <Button />
-            </ CardSection>
+              <Button
+                buttonText="Sign Up"
+                onPress={() => {}}
+              />
+            </CardSection>
           </View>
 
         </View>
@@ -44,20 +50,32 @@ const styles = StyleSheet.create({
     display: 'flex',
     width: '100%',
     flexDirection: 'column',
-    textAlign: 'center',
+    // textAlign: 'center'
   },
+
+  textStyle:{
+    fontSize: 18,
+    color: 'white',
+    // lineHeight: 40
+  },
+
   section1: {
     flex: 1,
-    backgroundColor: 'red'
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   section2: {
     flex: 1,
-    backgroundColor: 'blue'
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   buttonSection: {
     flex: 1,
     backgroundColor: 'white',
+
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
@@ -70,17 +88,3 @@ const styles = StyleSheet.create({
     flex: 3,
   }
 });
-
-// <Card>
-//         <CardSection>
-//           <Text>
-//             Logo
-//           </Text>
-//         </ CardSection>
-//         <CardSection>
-//           <Button />
-//         </ CardSection>
-//         <CardSection>
-//           <Button />
-//         </ CardSection>
-//       </Card>

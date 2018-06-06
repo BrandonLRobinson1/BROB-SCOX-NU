@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native';
 
 class Button extends Component {
-  state = {}
+  // state = {}
 
   render () {
     const { buttonStyle, buttonText } = styles;
@@ -23,15 +23,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#0000ff',
+    borderColor: 'blue',
     marginLeft: 5,
     marginRight: 5
     },
   buttonText: {
-    color: '#0000ff',
+    color: 'blue',
     fontSize: 16,
     fontWeight: '600',
-    padding: 14,
+    padding: 12,
     alignSelf: 'center', // centers text inside the button
   }
 });
