@@ -1,0 +1,61 @@
+react-native run-ios --simulator="iPhone 4s"
+
+
+
+==============================================================================================
+
+body {
+  height: 100px;
+  display: flex;
+  width: 100px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.header {
+  flex: 1;
+  background-color: red;
+}
+
+.body {
+  flex: 3;
+  display: flex;
+  flex
+}
+
+.body1 {
+  flex: 1;
+  background-color: green;
+}
+
+.body2 {
+  flex: 1;
+  background-color: green;
+}
+
+.footer {
+  flex: 1;
+  background-color: blue;
+  color: white;
+}
+
+===
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">header</div>
+    <div class="body">
+      <div class="body1">para1</div>
+      <div class="body2">para2</div>
+    </div>
+    <div class="footer">footer</div>
+    <script src="index.js"></script>
+  </body>
+</html>
