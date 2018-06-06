@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     color: '#0000ff',
     fontSize: 16,
     fontWeight: '600',
-    padding: 10,
+    padding: 14,
     alignSelf: 'center', // centers text inside the button
   }
 });
