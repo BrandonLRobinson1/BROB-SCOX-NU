@@ -21,7 +21,6 @@ export default class GetCredentials extends Component {
         <View style={buttonSection}>
 
           <View style={buttonPadding} />
-          
           <View style={buttonPlacement}>
             <CardSection>
               <Button
@@ -78,8 +77,7 @@ const styles = StyleSheet.create({
 
     display: 'flex',
     flexDirection: 'column',
-    height: '100%',
-
+    height: '100%'
   },
   buttonPadding: {
     flex: 2,

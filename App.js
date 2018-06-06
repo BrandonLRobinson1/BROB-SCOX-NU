@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-
+import { config } from './private';
 import { Provider } from 'react-redux';
 import firebase from 'firebase';
 import Router from './Router';
@@ -20,9 +20,6 @@ import { store } from './src/store'
 
 export default class App extends Component{
   componentWillMount() {
-    var config = {
-      // config for firebase will come from .env
-    };
     firebase.initializeApp(config);
   }
 
