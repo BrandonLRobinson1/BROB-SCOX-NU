@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { Button, CardSection, Card, FullCard, SectionSmall, SectionMedium } from '../common';
 import { colors } from '../Colors'
 
-export default class GetCredentials extends Component {
+class GetCredentials extends Component {
   render () {
     const { align, buttonSection, buttonPadding, buttonPlacement, textStyle } = styles;
     return (
@@ -42,8 +42,11 @@ export default class GetCredentials extends Component {
     )
   }
 }
-// Actions.main({ type: 'reset' }) // basically the router
+
+export default GetCredentials;
+
 const { NU_Red , NU_Blue, NU_White } = colors
+
 const styles = StyleSheet.create({
   textStyle:{
     fontSize: 18,

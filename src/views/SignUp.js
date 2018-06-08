@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { connect } from 'react-redux';
 import { Button, CardSection, Card, Input, SectionSmall } from '../common';
+import { updateFirstName, updateLastName, updateZipCode } from '../store/signUp/SignUp'; 
 import { colors } from '../Colors'
 
-export default class SignUp extends Component {
+class SignUp extends Component {
 
   render() {
     const { circle, circleContainer, circleSelected} = styles
@@ -16,10 +18,14 @@ export default class SignUp extends Component {
         </View>
         <CardSection>
           <Input
-            label="Name"
-            placeholder="Name"
-            value={'this.props.name'}
-            onChangeText={text => this.props.employeeUpdate({prop: 'name', value: text})}
+            label="First Name"
+            placeholder="First Name"
+            value={this.props.firstName}
+            onChangeText={text => {
+              console.log('text', text)
+              console.log(this.props)
+              this.props.updateFirstName(text);
+            }}
           />
         </CardSection>
         <CardSection>
@@ -37,7 +43,21 @@ export default class SignUp extends Component {
   }
 }
 
+export default connect(
+  state => ({
+    firstName: state.signUp.SignUp.firstName,
+    lastName: state.signUp.SignUp.lastName,
+    zipCode: state.signUp.SignUp.zipCode
+  }),
+  {
+    updateFirstName,
+    updateLastName,
+    updateZipCode
+  }
+)(SignUp);
+
 const { NU_Red , NU_Blue, NU_White } = colors
+
 const styles = StyleSheet.create({
   circle: {
     height: 12,

@@ -1,9 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import dummyStore from './dummyStore';
+// import dummyStore from './dummyStore';
+import signUp from './signUp';
 
 const rootReducer = combineReducers({
-  dummyStore,
+  signUp,
 })
 
 export const store = createStore(
