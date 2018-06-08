@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import { Button, CardSection, Card } from '../common';
+import { Button, CardSection, Card, FullCard, SectionSmall, SectionMedium } from '../common';
 
 export default class GetCredentials extends Component {
-
   render () {
-    const { container, section1, section2, buttonSection, buttonPadding, buttonPlacement, textStyle } = styles;
-
+    const { align, buttonSection, buttonPadding, buttonPlacement, textStyle } = styles;
     return (
-      <View style={container}>
+      <FullCard>
 
-        <View style={section1}>
-         <Text style={textStyle}>fill in later</Text>
-        </View>
+        <SectionSmall contentStyle={align}>
+          <Text style={textStyle}>fill in later</Text>
+        </SectionSmall>
 
-        <View style={section2}>
-         <Text style={textStyle}>fill in later</Text>
-        </View>
+        <SectionSmall contentStyle={align}>
+          <Text style={textStyle}>fill in later</Text>
+        </SectionSmall>
 
-        <View style={buttonSection}>
+        <SectionSmall contentStyle={buttonSection}>
 
           <View style={buttonPadding} />
           <View style={buttonPlacement}>
@@ -36,45 +34,25 @@ export default class GetCredentials extends Component {
             </CardSection>
           </View>
 
-        </View>
+        </SectionSmall>
 
-      </View>
+      </FullCard>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    height: '100%',
-    display: 'flex',
-    width: '100%',
-    flexDirection: 'column',
-    // textAlign: 'center'
-  },
-
   textStyle:{
     fontSize: 18,
     color: 'white',
-    // lineHeight: 40
   },
-
-  section1: {
-    flex: 1,
-    backgroundColor: 'red',
+  align: {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  section2: {
-    flex: 1,
-    backgroundColor: 'blue',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
   buttonSection: {
     flex: 1,
     backgroundColor: 'white',
-
     display: 'flex',
     flexDirection: 'column',
     height: '100%'

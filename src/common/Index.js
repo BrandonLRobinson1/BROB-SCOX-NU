@@ -5,3 +5,6 @@ export * from './Header';
 export * from './Spinner';
 export * from './Confirm';
 export * from './Input';
+export * from './FullCard';
+export * from './SectionMedium';
+export * from './SectionSmall';
