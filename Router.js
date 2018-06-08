@@ -8,6 +8,7 @@ const RouterComponent = () => (
     <Scene key="root" hideNavBar>
 
       <Scene key="getCredentials" >
+        {/*
         <Scene
            key="getCredentials"
            component={GetCredentials}
@@ -15,6 +16,7 @@ const RouterComponent = () => (
            initial
            hideNavBar
         />
+        */}
         <Scene
             key="SignUp"
             component={SignUp}

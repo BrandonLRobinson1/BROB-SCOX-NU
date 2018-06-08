@@ -41,8 +41,6 @@ buck-out/
 \.buckd/
 *.keystore
 
-private.js
-
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
@@ -56,3 +54,7 @@ private.js
 
 # Bundle artifact
 *.jsbundle
+
+# api keys etc
+private.js
+./src/helpers/*
