@@ -9,8 +9,7 @@ const SectionMedium = props => (
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
-    backgroundColor: 'blue'
+    flex: 2
   }
 });
 
