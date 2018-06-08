@@ -57,4 +57,4 @@ buck-out/
 
 # api keys etc
 private.js
-src/helpers/*
+src/helpers/*.js

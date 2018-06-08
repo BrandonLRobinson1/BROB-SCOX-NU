@@ -19,6 +19,7 @@ class SignUp extends Component {
 
 
   onButtonPress() {
+    console.log(!allLettersRegEx(this.props.firstName), this.props.firstName)
     if (!allLettersRegEx(this.props.firstName)) return this.setState({errorMessage: 'Please Enter Valid First Name TODO:// add special characters'});
     if (!allLettersRegEx(this.props.lastName)) return this.setState({errorMessage: 'Please Enter Valid Last Name TODO:// add special characters'});
     if (!allNumbersRegEx(this.props.zipCode)) return this.setState({errorMessage: 'Please Enter Valid Zip Code TODO:// add special characters'});
