@@ -5,8 +5,13 @@ export const allLettersRegEx = (input) => {
 
 export const allNumbersRegEx = input => {
   const numberRegEx = /^[0-9]+$/;
-  return numberRegEx.test(input)
+  return numberRegEx.test(input);
 };
+
+export const emailRegEx = input => {
+  const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
+  return emailRegEx.test(input);
+}
 
 // eslint-disable-next-line
 // export const parseAndPackage = (userInput, dropDownValue) => {

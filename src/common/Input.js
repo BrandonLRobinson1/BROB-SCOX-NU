@@ -1,10 +1,11 @@
 import React from 'react';
 import { TextInput, View, Text, StyleSheet } from 'react-native';
 
-const Input = ({ label, onChangeText, value, placeholder, secureTextEntry, editable = true, keyboardType = 'default', maxLength = null }) => ( // what to pass in
+const Input = ({ label, onChangeText, value, placeholder, secureTextEntry, editable = true, keyboardType = 'default', maxLength = null, clearTextOnFocus = false }) => ( // what to pass in
   <View style={styles.containerStyle}>
     <Text style={styles.labelStyle}>{label}</Text>
     <TextInput
+      clearTextOnFocus={clearTextOnFocus}
       maxLength={maxLength}
       editable={editable}
       keyboardType={keyboardType}

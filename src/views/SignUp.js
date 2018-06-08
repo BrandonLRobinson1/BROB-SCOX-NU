@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import { Button, CardSection, Card, Input, SectionSmall } from '../common';
 import { updateFirstName, updateLastName, updateZipCode } from '../store/signUp/SignUp'; 
 import { allLettersRegEx , allNumbersRegEx, specialCharacterValidation} from '../helpers/helpersFunctions';
@@ -21,6 +22,7 @@ class SignUp extends Component {
     if (!allLettersRegEx(this.props.firstName)) return this.setState({errorMessage: 'Please Enter Valid First Name '});
     if (!allLettersRegEx(this.props.lastName)) return this.setState({errorMessage: 'Please Enter Valid Last Name '});
     if (!allNumbersRegEx(this.props.zipCode)) return this.setState({errorMessage: 'Please Enter Valid Zip Code '});
+    return Actions["Email and Password"]();
   }
 
   render() {
@@ -64,7 +66,10 @@ class SignUp extends Component {
             placeholder="Zip Code"
             value={this.props.zipCode}
             keyboardType={'numeric'}
-            onChangeText={text => this.props.updateZipCode(text)}
+            onChangeText={text => {
+              this.setState({errorMessage: ''});
+              this.props.updateZipCode(text);
+            }}
             maxLength={5}
           />
         </CardSection>
@@ -130,6 +135,8 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: NU_Red,
+    width: '100%',
+    display: 'flex',
     textAlign: 'center'
   }
 });
