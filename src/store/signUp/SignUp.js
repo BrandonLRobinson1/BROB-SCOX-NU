@@ -5,6 +5,8 @@ import firebase from 'firebase';
 const defaultState = {
   firstName: '',
   lastName: '',
+  phoneNumber: '',
+  password: '',
   zipCode: '',
   email: ''
 };
@@ -12,6 +14,8 @@ const defaultState = {
 const prefix = 'NU_STORE/SIGN_UP/';
 export const updateFirstName = createAction(`${prefix}UPDATE_FIRST_NAME`);
 export const updateLastName = createAction(`${prefix}UPDATE_LAST_NAME`);
+export const updatePhoneNumber = createAction(`${prefix}UPDATE_PHONE_NUMBER`);
+export const updatePassword = createAction(`${prefix}UPDATE_PASSWORD`);
 export const updateZipCode = createAction(`${prefix}UPDATE_ZIP_CODE`);
 export const updateEmail = createAction(`${prefix}UPDATE_EMAIL`);
 export const clearAll = createAction(`${prefix}CLEAR_ALL`);
@@ -25,6 +29,14 @@ export default handleActions({
   [updateLastName]: (state, { payload }) => ({
     ...state,
     lastName: payload
+  }),
+  [updatePhoneNumber]: (state, { payload }) => ({
+    ...state,
+    phoneNumber: payload
+  }),
+  [updatePassword]: (state, { payload }) => ({
+    ...state,
+    password: payload
   }),
   [updateZipCode]: (state, { payload }) => ({
     ...state,

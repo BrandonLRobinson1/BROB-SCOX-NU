@@ -3,25 +3,23 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Button, CardSection, Card, Input, SectionSmall } from '../common';
-import { updateFirstName, updateLastName, updateZipCode } from '../store/signUp/SignUp'; 
-import { allLettersRegEx , allNumbersRegEx, specialCharacterValidation} from '../helpers/helpersFunctions';
+import { updatePhoneNumber } from '../store/signUp/SignUp'; 
+import { allNumbersRegEx } from '../helpers/helpersFunctions';
 import { colors } from '../Colors'
 
-class SignUp extends Component {
+class PhoneNumber extends Component {
   constructor(){
     super();
     this.state = {
-      errorMessage: ' '
+      errorMessage: ''
     }
     this.onButtonPress = this.onButtonPress.bind(this);
   }
 
   onButtonPress() {
-    // if (!allLettersRegEx(this.props.firstName)) return this.setState({errorMessage: 'Please Enter Valid First Name '});
-    // if (!allLettersRegEx(this.props.lastName)) return this.setState({errorMessage: 'Please Enter Valid Last Name '});
-    // if (!allNumbersRegEx(this.props.zipCode)) return this.setState({errorMessage: 'Please Enter Valid Zip Code '});
-    console.log('screen 1', this.props)
-    return Actions["Email and Password"]();
+    if (!allLettersRegEx(this.props.phoneNumber)) return this.setState({errorMessage: 'Please Enter Valid Phone Number '});
+    // Actions.Verify();
+    console.log('verify it all', this.props);
   }
 
   render() {
@@ -30,52 +28,37 @@ class SignUp extends Component {
       <Card>
 
         <View style={circleContainer}>
+          <View style={circle} />
+          <View style={circle} />
           <View style={circleSelected} />
-          <View style={circle} />
-          <View style={circle} />
         </View>
 
         <CardSection>
           <Input
-            label="First Name"
-            placeholder="First Name"
-            value={this.props.firstName}
+            label="Phone Num"
+            placeholder="Phone Number"
+            value={this.props.phoneNumber}
             onChangeText={text => {
-              this.setState({errorMessage: ''});
-              this.props.updateFirstName(text);
+              this.setState({errorMessage: ""});
+              this.props.updatePhoneNumber(text);
             }}
+            keyboardType={"numeric"}
+            maxLength={10}
           />
         </CardSection>
 
-        <CardSection>
-          <Input
-            label="Last Name"
-            placeholder="Last Name"
-            value={this.props.fastName}
-            onChangeText={text => {
-              this.setState({errorMessage: ''});
-              this.props.updateLastName(text);
-            }}
-          />
-        </CardSection>
+        
 
         <CardSection>
-          <Input
-            label="Zip Code"
-            placeholder="Zip Code"
-            value={this.props.zipCode}
-            keyboardType={'numeric'}
-            onChangeText={text => {
-              this.setState({errorMessage: ''});
-              this.props.updateZipCode(text);
-            }}
-            maxLength={5}
+          <Button
+            buttonText="Verify by Text"
+            onPress={this.onButtonPress}
           />
         </CardSection>
 
         <CardSection>
           <Button
-            buttonText="Next"
+            buttonText="Verify by Email"
             onPress={this.onButtonPress}
           />
         </CardSection>
@@ -95,16 +78,18 @@ class SignUp extends Component {
 
 export default connect(
   state => ({
+    // phoneNumber: state.signUp.SignUp.phoneNumber
     firstName: state.signUp.SignUp.firstName,
     lastName: state.signUp.SignUp.lastName,
-    zipCode: state.signUp.SignUp.zipCode
+    phoneNumber: state.signUp.SignUp.phoneNumber,
+    password: state.signUp.SignUp.password,
+    zipCode: state.signUp.SignUp.zipCode,
+    email: state.signUp.SignUp.email
   }),
   {
-    updateFirstName,
-    updateLastName,
-    updateZipCode
+    updatePhoneNumber
   }
-)(SignUp);
+)(PhoneNumber);
 
 const { NU_Red , NU_Blue, NU_White, NU_Grey } = colors
 
@@ -139,3 +124,4 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
+
