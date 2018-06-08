@@ -10,35 +10,21 @@ class SignUp extends Component {
   constructor(){
     super();
     this.state = {
-      errorMessage: ''
+      errorMessage: ' '
     }
     this.onButtonPress = this.onButtonPress.bind(this);
-    this.errorMessage = this.errorMessage.bind(this);
   }
-
-
 
   onButtonPress() {
-    console.log(!allLettersRegEx(this.props.firstName), this.props.firstName)
-    if (!allLettersRegEx(this.props.firstName)) return this.setState({errorMessage: 'Please Enter Valid First Name TODO:// add special characters'});
-    if (!allLettersRegEx(this.props.lastName)) return this.setState({errorMessage: 'Please Enter Valid Last Name TODO:// add special characters'});
-    if (!allNumbersRegEx(this.props.zipCode)) return this.setState({errorMessage: 'Please Enter Valid Zip Code TODO:// add special characters'});
-  }
-
-  errorMessage () {
-    return !this.state.errorMessage
-      ? null
-      : (
-        <CardSection>
-          <Text>
-            {this.state.errorMessage}
-          </Text>
-        </CardSection>
-      );
+    // TODO:// add special characters
+    // validate all inputs are true before moving forward
+    if (!allLettersRegEx(this.props.firstName)) return this.setState({errorMessage: 'Please Enter Valid First Name '});
+    if (!allLettersRegEx(this.props.lastName)) return this.setState({errorMessage: 'Please Enter Valid Last Name '});
+    if (!allNumbersRegEx(this.props.zipCode)) return this.setState({errorMessage: 'Please Enter Valid Zip Code '});
   }
 
   render() {
-    const { circle, circleContainer, circleSelected} = styles
+    const { circle, circleContainer, circleSelected, errorText } = styles
     return (
       <Card>
 
@@ -79,6 +65,7 @@ class SignUp extends Component {
             value={this.props.zipCode}
             keyboardType={'numeric'}
             onChangeText={text => this.props.updateZipCode(text)}
+            maxLength={5}
           />
         </CardSection>
 
@@ -88,7 +75,12 @@ class SignUp extends Component {
             onPress={this.onButtonPress}
           />
         </CardSection>
-        {this.errorMessage()}
+        
+        <CardSection>
+          <Text style={errorText}>
+            {this.state.errorMessage}
+          </Text>
+        </CardSection>
 
       </Card>
     )
@@ -135,5 +127,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: NU_Grey
+  },
+  errorText: {
+    color: NU_Red,
+    textAlign: 'center'
   }
 });
