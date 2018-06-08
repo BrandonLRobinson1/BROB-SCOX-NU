@@ -1,22 +1,29 @@
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
+import SignUp from './src/views/SignUp';
 import GetCredentials from './src/views/GetCredentials';
 
 const RouterComponent = () => (
   <Router>
-    <Scene key='root' hideNavBar>
+    <Scene key="root" hideNavBar>
 
-      <Scene key="getCredentials" hideNavBar>
+      <Scene key="getCredentials" >
         <Scene
-          key='getCredentials'
-          component={GetCredentials}
-          title="Please Login"
-          initial
+           key="getCredentials"
+           component={GetCredentials}
+           title="Please Login"
+           initial
+           hideNavBar
         />
+        <Scene
+            key="SignUp"
+            component={SignUp}
+            title="Welcome to ---"
+          />
         </Scene>
-      </Scene>
      
-      
+      </Scene>
+    
   </Router>
 );
 

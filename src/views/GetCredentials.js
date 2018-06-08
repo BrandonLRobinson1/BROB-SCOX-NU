@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { Button, CardSection, Card, FullCard, SectionSmall, SectionMedium } from '../common';
 
 export default class GetCredentials extends Component {
@@ -29,7 +30,7 @@ export default class GetCredentials extends Component {
             <CardSection>
               <Button
                 buttonText="Sign Up"
-                onPress={() => {}}
+                onPress={() => Actions.SignUp()}
               />
             </CardSection>
           </View>
@@ -40,6 +41,7 @@ export default class GetCredentials extends Component {
     )
   }
 }
+// Actions.main({ type: 'reset' }) // basically the router
 
 const styles = StyleSheet.create({
   textStyle:{
