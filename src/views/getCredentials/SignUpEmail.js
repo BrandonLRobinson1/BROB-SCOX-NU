@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Button, CardSection, Card, Input, SectionSmall } from '../common';
-import { updateEmail } from '../store/signUp/SignUp'; 
-import { emailRegEx, specialCharacterValidation } from '../helpers/helpersFunctions';
-import { colors } from '../Colors'
+import { Button, CardSection, Card, Input, SectionSmall } from '../../common';
+import { updateEmail } from '../../store/signUp/SignUp'; 
+import { emailRegEx, specialCharacterValidation } from '../../helpers/helpersFunctions';
+import { colors } from '../../Colors';
 
 class SignUp extends Component {
   constructor(){
@@ -28,6 +28,7 @@ class SignUp extends Component {
     // if (pw1.length < 7) return this.setState({errorMessage: 'Password must be at least 7 characters'});
     // if (!specialCharacterValidation(pw1)) return this.setState({errorMessage: 'Password must contain at least one special character'});
     // if (pw1 !== pw2) return this.setState({errorMessage: 'Password do not match', pw1: '', pw2: '', clearTextOnFocus: true, useSecondPassword: true});
+// encrtypt password save it and clear it from state
     console.log('screen 2', this.props)
     Actions["Phone Number"]();    
   }

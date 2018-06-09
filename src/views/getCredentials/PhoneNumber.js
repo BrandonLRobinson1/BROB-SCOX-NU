@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Button, CardSection, Card, Input, SectionSmall } from '../common';
-import { updatePhoneNumber } from '../store/signUp/SignUp'; 
-import { allNumbersRegEx } from '../helpers/helpersFunctions';
-import { colors } from '../Colors'
+import { Button, CardSection, Card, Input } from '../../common';
+import { updatePhoneNumber } from '../../store/signUp'; 
+import { allNumbersRegEx } from '../../helpers/helpersFunctions';
+import { colors } from '../../Colors'
 
 class PhoneNumber extends Component {
   constructor(){

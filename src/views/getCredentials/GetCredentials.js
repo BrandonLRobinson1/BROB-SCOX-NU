@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Button, CardSection, Card, FullCard, SectionSmall, SectionMedium } from '../common';
-import { colors } from '../Colors'
+import { Button, CardSection, Card, FullCard, SectionSmall, SectionMedium } from '../../common';
+import { colors } from '../../Colors'
 
 class GetCredentials extends Component {
   render () {
