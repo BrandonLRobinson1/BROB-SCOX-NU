@@ -55,34 +55,37 @@ export const signUserUp = passWord => (dispatch, getState) => {
           firstName,
           lastName,
           zipCode,
-          email
+          email,
+          phoneNumber,
+          password
         }
       }
     } = getState();
     // *** // to lowercase everuthing
 
-  // TODO: SWITCH IT OFF TEST DATA FOLDER IN FIREBASE
-  return firebase.database().ref(`/users/${currentUser.uid}/testAccounts`)
-    .push({ firstName, lastName, zipCode, email })
-    .then(() => Actions.pop()) //prevents double stacking in scene
-    .then(() => {
-      dispatch(clearAll()) // clears input
-      console.log('actions', Actions)
-      Actions.somewhere()
-    })
-    .catch(err => console.error(err))
+   return firebase.auth().createUserWithEmailAndPassword(email.toLowerCase(), password); // use return otherwise it will try to regulate password length
+      
+
 };
-// firebase.auth().createUserWithEmailAndPassword(email.toLowerCase(), password); // use return otherwise it will try to regulate password length
-//       })
-//       .then( this.onLoginSuccess )
-//       .catch( this.onLoginFail );
 
 
 export const clearAll = () => (dispatch, getState) => {
-    dispatch(updateFirstName(null));
-    dispatch(updateLastName(null));
-    dispatch(updatePhoneNumber(null));
-    dispatch(updatePassword(null));
-    dispatch(updateZipCode(null));
-    dispatch(updateEmail(null));
-}
+  dispatch(updateFirstName(null));
+  dispatch(updateLastName(null));
+  dispatch(updatePhoneNumber(null));
+  dispatch(updatePassword(null));
+  dispatch(updateZipCode(null));
+  dispatch(updateEmail(null));
+};
+
+// console.log('firebase.auth', firebase.auth)
+  // // TODO: SWITCH IT OFF TEST DATA FOLDER IN FIREBASE
+  // return firebase.database().ref(`/users/${currentUser.uid}/testAccounts`)
+  //   .push({ firstName, lastName, zipCode, email, phoneNumber, password })
+  //   .then(() => Actions.pop()) //prevents double stacking in scene
+  //   .then(() => {
+  //     dispatch(clearAll()) // clears input
+      
+  //     Actions.somewhere()
+  //   })
+  //   .catch(err => console.error(err))

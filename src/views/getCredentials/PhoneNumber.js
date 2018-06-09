@@ -3,8 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Button, CardSection, Card, Input } from '../../common';
-import { updatePhoneNumber } from '../../store/signUp'; 
 import { allNumbersRegEx } from '../../helpers/helpersFunctions';
+import { updatePhoneNumber, signUserUp } from '../../store/signUp/SignUp'; 
 import { colors } from '../../Colors'
 
 class PhoneNumber extends Component {
@@ -16,8 +16,12 @@ class PhoneNumber extends Component {
     this.onButtonPress = this.onButtonPress.bind(this);
   }
 
-  onButtonPress() {
-    if (!allNumbersRegEx(this.props.phoneNumber)) return this.setState({errorMessage: 'Please Enter Valid Phone Number '});
+  async onButtonPress() {
+    // if (!allNumbersRegEx(this.props.phoneNumber) || this.props.phoneNumber.length < 10) return this.setState({errorMessage: 'Please Enter Valid Phone Number '});
+
+    await this.props.signUserUp()
+    .then(() => console.log('then--'))
+    .catch( (err) => console.log('catch--', err))
     console.log('verify it all', this.props);
     // Actions.Verify();
   }
@@ -77,6 +81,8 @@ class PhoneNumber extends Component {
 export default connect(
   state => ({
     // phoneNumber: state.signUp.SignUp.phoneNumber
+
+    // HAVE THESE ALL HERE FOR TESTING PURPOSES
     firstName: state.signUp.SignUp.firstName,
     lastName: state.signUp.SignUp.lastName,
     phoneNumber: state.signUp.SignUp.phoneNumber,
@@ -85,7 +91,8 @@ export default connect(
     email: state.signUp.SignUp.email
   }),
   {
-    updatePhoneNumber
+    updatePhoneNumber,
+    signUserUp
   }
 )(PhoneNumber);
 

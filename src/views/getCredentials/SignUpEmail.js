@@ -24,15 +24,16 @@ class SignUp extends Component {
   onButtonPress() {
     const { pw1, pw2, clearTextOnFocus, useSecondPassword } = this.state;
 
-    if (!emailRegEx(this.props.email)) return this.setState({errorMessage: 'Please Enter Valid Email '});
-    if (pw1.length < 7) return this.setState({errorMessage: 'Password must be at least 7 characters'});
-    if (!specialCharacterValidation(pw1)) return this.setState({errorMessage: 'Password must contain at least one special character'});
-    if (pw1 !== pw2) return this.setState({errorMessage: 'Password do not match', pw1: '', pw2: '', clearTextOnFocus: true, useSecondPassword: true});
-
-    // encrtypt password save it and clear it from state
+    // if (!emailRegEx(this.props.email)) return this.setState({errorMessage: 'Please Enter Valid Email '});
+    // if (pw1.length < 7) return this.setState({errorMessage: 'Password must be at least 7 characters'});
+    // if (!specialCharacterValidation(pw1)) return this.setState({errorMessage: 'Password must contain at least one special character'});
+    // if (pw1 !== pw2) return this.setState({errorMessage: 'Password do not match', pw1: '', pw2: '', clearTextOnFocus: true, useSecondPassword: true});
+    
+    // TODO: encrtypt password save it and clear it from state
     // const salt = bcrypt.genSaltSync(saltRounds);
     // const hash = bcrypt.hashSync(myPlaintextPassword, salt);
     // this.props.updatePassword(hash);
+    this.props.updatePassword(`findout how to encrypt in front end ${pw1}`);
     
     Actions["Phone Number"]();    
   }
