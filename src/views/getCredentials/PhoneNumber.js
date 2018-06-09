@@ -18,12 +18,7 @@ class PhoneNumber extends Component {
 
   async onButtonPress() {
     // if (!allNumbersRegEx(this.props.phoneNumber) || this.props.phoneNumber.length < 10) return this.setState({errorMessage: 'Please Enter Valid Phone Number '});
-
-    await this.props.signUserUp()
-    .then(() => console.log('then--'))
-    .catch( (err) => console.log('catch--', err))
-    console.log('verify it all', this.props);
-    // Actions.Verify();
+    console.log('how is the redux store doing', this.props);
   }
 
   render() {

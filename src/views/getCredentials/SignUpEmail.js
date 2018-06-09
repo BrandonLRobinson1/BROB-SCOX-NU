@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Button, CardSection, Card, Input, SectionSmall } from '../../common';
-import { updateEmail, updatePassword } from '../../store/signUp/SignUp'; 
+import { updateEmail, updatePassword, signUserUp } from '../../store/signUp/SignUp'; 
 import { emailRegEx, specialCharacterValidation } from '../../helpers/helpersFunctions';
 import { colors } from '../../Colors';
 
@@ -21,10 +21,10 @@ class SignUp extends Component {
     this.onButtonPress = this.onButtonPress.bind(this);
   }
 
-  onButtonPress() {
+  async onButtonPress() {
     const { pw1, pw2, clearTextOnFocus, useSecondPassword } = this.state;
 
-    // if (!emailRegEx(this.props.email)) return this.setState({errorMessage: 'Please Enter Valid Email '});
+    // if (!emailRegEx(this.props.email)) return this.setState({errorMessage: 'The email address is badly formatted.'});
     // if (pw1.length < 7) return this.setState({errorMessage: 'Password must be at least 7 characters'});
     // if (!specialCharacterValidation(pw1)) return this.setState({errorMessage: 'Password must contain at least one special character'});
     // if (pw1 !== pw2) return this.setState({errorMessage: 'Password do not match', pw1: '', pw2: '', clearTextOnFocus: true, useSecondPassword: true});
@@ -34,8 +34,24 @@ class SignUp extends Component {
     // const hash = bcrypt.hashSync(myPlaintextPassword, salt);
     // this.props.updatePassword(hash);
     this.props.updatePassword(`findout how to encrypt in front end ${pw1}`);
-    
-    Actions["Phone Number"]();    
+
+    await this.props.signUserUp()
+      .then(() => {
+        this.setState({
+          errorMessage: '',
+          clearTextOnFocus: false,
+          useSecondPassword: false,
+          pw1: '',
+          pw2: ''
+        });
+        this.props.updatePassword(null);
+        console.log('verify it all', this.props);
+        Actions["Phone Number"]();    
+      })
+      .catch( (err) => {
+        console.log('email sign in error', err);
+        this.setState({ errorMessage: err.message });
+      })
   }
 
   render() {
@@ -63,6 +79,7 @@ class SignUp extends Component {
 
         <CardSection>
           <Input
+            secureTextEntry
             label="Password"
             placeholder="Password"
             value={this.state.p1}
@@ -79,6 +96,7 @@ class SignUp extends Component {
 
         <CardSection>
           <Input
+            secureTextEntry
             label="Password"
             placeholder="Re-Enter Password"
             value={this.state.p2}
@@ -120,7 +138,8 @@ export default connect(
   }),
   {
     updateEmail,
-    updatePassword
+    updatePassword,
+    signUserUp
   }
 )(SignUp);
 
