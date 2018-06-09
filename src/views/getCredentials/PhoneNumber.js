@@ -17,9 +17,9 @@ class PhoneNumber extends Component {
   }
 
   onButtonPress() {
-    if (!allLettersRegEx(this.props.phoneNumber)) return this.setState({errorMessage: 'Please Enter Valid Phone Number '});
-    // Actions.Verify();
+    if (!allNumbersRegEx(this.props.phoneNumber)) return this.setState({errorMessage: 'Please Enter Valid Phone Number '});
     console.log('verify it all', this.props);
+    // Actions.Verify();
   }
 
   render() {

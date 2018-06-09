@@ -20,7 +20,6 @@ class SignUp extends Component {
     // if (!allLettersRegEx(this.props.firstName)) return this.setState({errorMessage: 'Please Enter Valid First Name '});
     // if (!allLettersRegEx(this.props.lastName)) return this.setState({errorMessage: 'Please Enter Valid Last Name '});
     // if (!allNumbersRegEx(this.props.zipCode)) return this.setState({errorMessage: 'Please Enter Valid Zip Code '});
-    console.log('screen 1', this.props)
     return Actions["Email and Password"]();
   }
 
