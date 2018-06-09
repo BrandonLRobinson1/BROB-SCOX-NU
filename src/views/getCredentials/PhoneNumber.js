@@ -74,8 +74,6 @@ class PhoneNumber extends Component {
   }
 }
 
-// name zip -> email pw times 2 -> verify email
-
 export default connect(
   state => ({
     // phoneNumber: state.signUp.SignUp.phoneNumber

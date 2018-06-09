@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+// import bcrypt from 'bcrypt';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import bcrypt from 'bcryptjs'
 import { Button, CardSection, Card, Input, SectionSmall } from '../../common';
 import { updateEmail, updatePassword } from '../../store/signUp/SignUp'; 
 import { emailRegEx, specialCharacterValidation } from '../../helpers/helpersFunctions';
@@ -22,18 +22,17 @@ class SignUp extends Component {
   }
 
   onButtonPress() {
+    const { pw1, pw2, clearTextOnFocus, useSecondPassword } = this.state;
 
-    // const { pw1, pw2, clearTextOnFocus, useSecondPassword } = this.state;
-
-    // if (!emailRegEx(this.props.email)) return this.setState({errorMessage: 'Please Enter Valid Email '});
-    // if (pw1.length < 7) return this.setState({errorMessage: 'Password must be at least 7 characters'});
-    // if (!specialCharacterValidation(pw1)) return this.setState({errorMessage: 'Password must contain at least one special character'});
-    // if (pw1 !== pw2) return this.setState({errorMessage: 'Password do not match', pw1: '', pw2: '', clearTextOnFocus: true, useSecondPassword: true});
+    if (!emailRegEx(this.props.email)) return this.setState({errorMessage: 'Please Enter Valid Email '});
+    if (pw1.length < 7) return this.setState({errorMessage: 'Password must be at least 7 characters'});
+    if (!specialCharacterValidation(pw1)) return this.setState({errorMessage: 'Password must contain at least one special character'});
+    if (pw1 !== pw2) return this.setState({errorMessage: 'Password do not match', pw1: '', pw2: '', clearTextOnFocus: true, useSecondPassword: true});
 
     // encrtypt password save it and clear it from state
-    let salt = bcrypt.genSaltSync(10);
-    let hash = bcrypt.hashSync(pw1, salt);
-    this.props.updatePassword(hash);
+    // const salt = bcrypt.genSaltSync(saltRounds);
+    // const hash = bcrypt.hashSync(myPlaintextPassword, salt);
+    // this.props.updatePassword(hash);
     
     Actions["Phone Number"]();    
   }

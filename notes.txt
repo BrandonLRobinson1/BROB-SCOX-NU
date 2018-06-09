@@ -1,61 +1,17 @@
 react-native run-ios --simulator="iPhone 4s"
 
-
-
-==============================================================================================
-
-body {
-  height: 100px;
-  display: flex;
-  width: 100px;
-  flex-direction: column;
-  text-align: center;
-}
-
-.header {
-  flex: 1;
-  background-color: red;
-}
-
-.body {
-  flex: 3;
-  display: flex;
-  flex
-}
-
-.body1 {
-  flex: 1;
-  background-color: green;
-}
-
-.body2 {
-  flex: 1;
-  background-color: green;
-}
-
-.footer {
-  flex: 1;
-  background-color: blue;
-  color: white;
-}
-
-===
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="index.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <div class="header">header</div>
-    <div class="body">
-      <div class="body1">para1</div>
-      <div class="body2">para2</div>
-    </div>
-    <div class="footer">footer</div>
-    <script src="index.js"></script>
-  </body>
-</html>
+This might be related to https://github.com/facebook/react-native/issues/4968
+ 1. Clear watchman watches: `watchman watch-del-all`.
+  2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.
+  3. Reset Metro Bundler cache: `rm -rf /tmp/metro-bundler-cache-*` or `npm start -- --reset-cache`.
+  4. Remove haste cache: `rm -rf /tmp/haste-map-react-native-packager-*`.
+    at ModuleResolver.resolveDependency (/Users/brob/Desktop/Working on/BROBSCOXNU/node_modules/metro/src/node-haste/DependencyGraph/ModuleResolution.js:161:1460)
+    at ResolutionRequest.resolveDependency (/Users/brob/Desktop/Working on/BROBSCOXNU/node_modules/metro/src/node-haste/DependencyGraph/ResolutionRequest.js:91:16)
+    at DependencyGraph.resolveDependency (/Users/brob/Desktop/Working on/BROBSCOXNU/node_modules/metro/src/node-haste/DependencyGraph.js:272:4579)
+    at dependencies.map.relativePath (/Users/brob/Desktop/Working on/BROBSCOXNU/node_modules/metro/src/DeltaBundler/traverseDependencies.js:376:19)
+    at Array.map (native)
+    at resolveDependencies (/Users/brob/Desktop/Working on/BROBSCOXNU/node_modules/metro/src/DeltaBundler/traverseDependencies.js:374:16)
+    at /Users/brob/Desktop/Working on/BROBSCOXNU/node_modules/metro/src/DeltaBundler/traverseDependencies.js:212:33
+    at Generator.next (<anonymous>)
+    at step (/Users/brob/Desktop/Working on/BROBSCOXNU/node_modules/metro/src/DeltaBundler/traverseDependencies.js:297:313)
+    at /Users/brob/Desktop/Working on/BROBSCOXNU/node_modules/metro/src/DeltaBundler/traverseDependencies.js:297:473

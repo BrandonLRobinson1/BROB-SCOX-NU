@@ -18,8 +18,6 @@ export const updatePhoneNumber = createAction(`${prefix}UPDATE_PHONE_NUMBER`);
 export const updatePassword = createAction(`${prefix}UPDATE_PASSWORD`);
 export const updateZipCode = createAction(`${prefix}UPDATE_ZIP_CODE`);
 export const updateEmail = createAction(`${prefix}UPDATE_EMAIL`);
-export const clearAll = createAction(`${prefix}CLEAR_ALL`);
-
 
 export default handleActions({
   [updateFirstName]: (state, { payload }) => ({
@@ -45,15 +43,7 @@ export default handleActions({
   [updateEmail]: (state, { payload }) => ({
     ...state,
     email: payload
-  }),
-  [clearAll]: (state, { payload }) => ({
-    ...state,
-    firstName: '',
-    lastName: '',
-    zipCode: '',
-    email: ''
-
-  }),
+  })
 
 }, defaultState);
 
@@ -86,3 +76,13 @@ export const signUserUp = passWord => (dispatch, getState) => {
 //       })
 //       .then( this.onLoginSuccess )
 //       .catch( this.onLoginFail );
+
+
+export const clearAll = () => (dispatch, getState) => {
+    dispatch(updateFirstName(null));
+    dispatch(updateLastName(null));
+    dispatch(updatePhoneNumber(null));
+    dispatch(updatePassword(null));
+    dispatch(updateZipCode(null));
+    dispatch(updateEmail(null));
+}
