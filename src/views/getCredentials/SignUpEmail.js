@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import bcrypt from 'bcrypt';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Button, CardSection, Card, Input, SectionSmall } from '../../common';
+import { Button, CardSection, Card, Input, Spinner } from '../../common';
 import { updateEmail, updatePassword, signUserUp } from '../../store/signUp/SignUp'; 
 import { emailRegEx, specialCharacterValidation } from '../../helpers/helpersFunctions';
 import { colors } from '../../Colors';
@@ -16,9 +16,11 @@ class SignUp extends Component {
       clearTextOnFocus: false,
       useSecondPassword: false,
       pw1: '',
-      pw2: ''
+      pw2: '',
+      loading: null
     }
     this.onButtonPress = this.onButtonPress.bind(this);
+    this.renderButton = this.renderButton.bind(this);
   }
 
   async onButtonPress() {
@@ -35,27 +37,43 @@ class SignUp extends Component {
     // this.props.updatePassword(hash);
     this.props.updatePassword(`findout how to encrypt in front end ${pw1}`);
 
+    this.setState({ loading: true });
+
     await this.props.signUserUp()
       .then(() => {
         this.setState({
-          errorMessage: '',
-          clearTextOnFocus: false,
-          useSecondPassword: false,
           pw1: '',
           pw2: ''
         });
         this.props.updatePassword(null);
-        console.log('verify it all', this.props);
         Actions["Phone Number"]();    
+        console.log('verify it all', this.props);
+        this.setState({ loading: false });
       })
       .catch( (err) => {
         console.log('email sign in error', err);
-        this.setState({ errorMessage: err.message });
+        this.setState({ 
+          errorMessage: err.message,
+          loading: false
+        });
       })
   }
 
+  renderButton() {
+    if (this.state.loading) {
+      return <Spinner size='large' />
+    }
+    return (
+      <Button
+        buttonText="Submit"
+        onPress={this.onButtonPress}
+      />
+    )
+  }
+
   render() {
-    const { circle, circleContainer, circleSelected, errorText } = styles
+    const { circle, circleContainer, circleSelected, errorText  } = styles;
+
     return (
       <Card>
 
@@ -111,11 +129,8 @@ class SignUp extends Component {
           />
         </CardSection>
 
-        <CardSection>
-          <Button
-            buttonText="Submit"
-            onPress={this.onButtonPress}
-          />
+        <CardSection>    
+          {this.renderButton()}
         </CardSection>
         
         <CardSection>
@@ -128,8 +143,6 @@ class SignUp extends Component {
     )
   }
 }
-
-// name zip -> email pw times 2 -> verify email
 
 export default connect(
   state => ({
@@ -174,24 +187,14 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     textAlign: 'center'
+  },
+  cardSectionStyles: {
+    borderBottomWidth: 1,
+    padding: 5,
+    backgroundColor: '#fff',
+    justifyContent: 'flex-start',
+    borderColor: '#ddd',
+    flexDirection: 'row',
+    position: 'relative',
   }
 });
-
-// const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
-
-// if(reg.test(email) === false) {
-//   return this.setState({
-//     email: '',
-//     password: '',
-//     error: 'Please enter a valid email',
-//     loading: false
-//   })
-// };
-
-// if (password.length < 7) 
-//   return this.setState({
-//     // email: '',
-//     password: '',
-//     loading: false,
-//     error: 'Password must contain at least 7 characters'
-// });

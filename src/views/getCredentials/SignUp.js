@@ -90,8 +90,6 @@ class SignUp extends Component {
   }
 }
 
-// name zip -> email pw times 2 -> verify email
-
 export default connect(
   state => ({
     firstName: state.signUp.SignUp.firstName,

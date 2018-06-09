@@ -61,11 +61,8 @@ export const signUserUp = passWord => (dispatch, getState) => {
         }
       }
     } = getState();
-    // *** // to lowercase everuthing
 
    return firebase.auth().createUserWithEmailAndPassword(email.toLowerCase(), password); // use return otherwise it will try to regulate password length
-      
-
 };
 
 
@@ -81,7 +78,7 @@ export const clearAll = () => (dispatch, getState) => {
 // console.log('firebase.auth', firebase.auth)
   // // TODO: SWITCH IT OFF TEST DATA FOLDER IN FIREBASE
   // return firebase.database().ref(`/users/${currentUser.uid}/testAccounts`)
-  //   .push({ firstName, lastName, zipCode, email, phoneNumber, password })
+  //   .push({ firstName, lastName, zipCode, phoneNumber })
   //   .then(() => Actions.pop()) //prevents double stacking in scene
   //   .then(() => {
   //     dispatch(clearAll()) // clears input

@@ -22,8 +22,10 @@ const RouterComponent = () => (
       <Scene
         key="SignUp"
         component={SignUp}
-        title="Welcome to ---"
+        title="Welcome to NU"
       />
+    {/*
+    */}
       <Scene
         key="Email and Password"
         component={SignUpEmail}

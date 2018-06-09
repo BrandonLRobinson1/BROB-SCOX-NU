@@ -22,7 +22,7 @@ class PhoneNumber extends Component {
   }
 
   render() {
-    const { circle, circleContainer, circleSelected, errorText } = styles
+    const { circle, circleContainer, circleSelected, errorText } = styles;
     return (
       <Card>
 
@@ -45,8 +45,6 @@ class PhoneNumber extends Component {
             maxLength={10}
           />
         </CardSection>
-
-        
 
         <CardSection>
           <Button
