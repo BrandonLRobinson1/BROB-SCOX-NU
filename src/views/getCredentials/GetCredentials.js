@@ -25,7 +25,7 @@ class GetCredentials extends Component {
             <CardSection>
               <Button
                 buttonText="Log In"
-                onPress={() => {}}
+                onPress={() => Actions.logIn()}
               />
             </CardSection>
             <CardSection>
