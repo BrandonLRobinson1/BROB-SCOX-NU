@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { colors } from '../Colors';
 
 const Header = (props) => {
     const { headerStyle, headerText } = styles;
@@ -12,12 +13,14 @@ const Header = (props) => {
     )
 }
 
+const { NU_Red, NU_Blue, NU_White, NU_Grey, NU_Black,  } = colors
+
 const styles = StyleSheet.create({
   headerStyle: {
       // flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#F8F8F8',
+      backgroundColor: NU_Header_Background,
       height: 70,
       paddingTop: 30,
       shadowColor: '#000',

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { colors } from '../Colors';
 
 const Card = (props) => {
     const { CardStyles } = styles;
@@ -7,16 +8,18 @@ const Card = (props) => {
       <View style={styles.CardStyles}>
           {props.children}
       </View>
-    )
-}
+    );
+};
+
+const { NU_Red, NU_Blue, NU_White, NU_Grey, NU_Black, NU_Border } = colors
 
 const styles = StyleSheet.create({
   CardStyles: {
       borderWidth: 1,
       borderRadius: 2,
-      borderColor: '#ddd',
+      borderColor: NU_Border,
       borderBottomWidth: 0,
-      shadowColor: '#000',
+      shadowColor: NU_Black,
       shadowOffset: {width: 0, height: 2},
       shadowOpacity: 0.1,
       shadowRadius: 2,

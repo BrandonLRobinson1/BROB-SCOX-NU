@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, Modal } from 'react-native';
 import { CardSection } from './CardSection';
 import { Button } from './Button';
+import { colors } from '../Colors';
 // import { relative } from 'path';
 
 const Confirm = ({hildren, visible, onAccept, onDecline}) => {
@@ -34,6 +35,8 @@ const Confirm = ({hildren, visible, onAccept, onDecline}) => {
   )
 }
 
+const { NU_Red, NU_Blue, NU_White, NU_Grey, NU_Black, NU_Modal_Black } = colors
+
 const styles = {
   cardSectiontyle:{
     jusifyContent: 'center'
@@ -45,7 +48,7 @@ const styles = {
     lineHeight: 40
   },
   containerStyle:{
-    backgroundColor: 'rgba(0, 0, 0, .75)',
+    backgroundColor: NU_Modal_Black,
     position: 'relative',
     flex: 1,
     justifyContent: 'center'

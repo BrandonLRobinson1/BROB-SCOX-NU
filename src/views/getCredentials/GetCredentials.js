@@ -10,15 +10,15 @@ class GetCredentials extends Component {
     return (
       <FullCard>
 
-        <SectionSmall contentStyle={align}>
+        <SectionSmall style={align}>
           <Text style={textStyle}>fill in later</Text>
         </SectionSmall>
 
-        <SectionSmall contentStyle={align}>
+        <SectionSmall style={align}>
           <Text style={textStyle}>fill in later</Text>
         </SectionSmall>
 
-        <SectionSmall contentStyle={buttonSection}>
+        <SectionSmall style={buttonSection}>
 
           <View style={buttonPadding} />
           <View style={buttonPlacement}>

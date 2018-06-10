@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
+import { colors } from '../Colors';
 
 const CardSection = (props) => {
   const { CardSectionStyles } = styles;
@@ -8,15 +9,17 @@ const CardSection = (props) => {
           {props.children}
       </View>
     );
-}
+};
+
+const { NU_Red, NU_Blue, NU_White, NU_Grey, NU_Black, NU_Border_Grey, NU_Backround  } = colors
 
 const styles = StyleSheet.create({
   CardSectionStyles: {
     borderBottomWidth: 1,
     padding: 5,
-    backgroundColor: '#fff',
+    backgroundColor: NU_Backround,
     justifyContent: 'flex-start',
-    borderColor: '#ddd',
+    borderColor: NU_Border_Grey,
     flexDirection: 'row',
     position: 'relative',
     }

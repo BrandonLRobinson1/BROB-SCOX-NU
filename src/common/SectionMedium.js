@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 const SectionMedium = props => (
-  <View style={[styles.container, props.contentStyle]}>
+  <View style={[styles.container, props.style]}>
     {props.children}
   </View>
 );

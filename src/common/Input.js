@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextInput, View, Text, StyleSheet } from 'react-native';
+import { colors } from '../Colors';
 
 const Input = ({ label, onChangeText, value, placeholder, secureTextEntry, editable = true, keyboardType = 'default', maxLength = null, clearTextOnFocus = false }) => ( // what to pass in
   <View style={styles.containerStyle}>
@@ -19,9 +20,11 @@ const Input = ({ label, onChangeText, value, placeholder, secureTextEntry, edita
   </View>
 );
 
+const { NU_Black } = colors;
+
 const styles = StyleSheet.create({
   inputStyle : {
-    color: '#000',
+    color: NU_Black,
     paddingRight: 5,
     paddingLeft: 5,
     fontSize: 18,
