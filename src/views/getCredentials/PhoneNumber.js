@@ -40,6 +40,16 @@ class PhoneNumber extends Component {
         console.log(err);
         this.setState({ loading: false });
       });
+
+      // console.log(
+      //   'await in function before this log -->',
+      //   this.props.firstName,
+      //   this.props.lastName,
+      //   this.props.phoneNumber,
+      //   this.props.password,
+      //   this.props.zipCode,
+      //   this.props.email
+      // )
   }
 
   textInputRender(maxLength, placeholder, stateNum) {
@@ -60,7 +70,6 @@ class PhoneNumber extends Component {
             errorMessage: "",
             [setStateVar]: text,
           });
-          console.log('valueVar', valueVar)
         }}
       />
     )

@@ -81,7 +81,7 @@ export const addFormInfo = () => (dispatch, getState) => {
 
   // TODO: SWITCH IT OFF TEST DATA FOLDER IN FIREBASE
   return firebase.database().ref(`/users/${currentUser.uid}/testAccounts`)
-    .push({ firstName, lastName, zipCode, phoneNumber });
+    .push({ firstName, lastName, zipCode, phoneNumber, logIns: 1, moreUsefulData: 'goes here' });
 };
 
 
