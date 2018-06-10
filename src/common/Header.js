@@ -13,7 +13,7 @@ const Header = (props) => {
     )
 }
 
-const { NU_Red, NU_Blue, NU_White, NU_Grey, NU_Black,  } = colors
+const { NU_Red, NU_Blue, NU_White, NU_Grey, NU_Black, NU_Header_Background, NU_Shadow } = colors
 
 const styles = StyleSheet.create({
   headerStyle: {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
       backgroundColor: NU_Header_Background,
       height: 70,
       paddingTop: 30,
-      shadowColor: '#000',
+      shadowColor: NU_Shadow,
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.2,
       elevation: 2,
