@@ -19,13 +19,13 @@ const RouterComponent = () => (
         hideNavBar
         initial
       />
+    {/*
+    */}
       <Scene
         key="SignUp"
         component={SignUp}
         title="Welcome to NU"
       />
-    {/*
-    */}
       <Scene
         key="Email and Password"
         component={SignUpEmail}

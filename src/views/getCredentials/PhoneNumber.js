@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Button, CardSection, Card, Input } from '../../common';
 import { allNumbersRegEx } from '../../helpers/helpersFunctions';
-import { updatePhoneNumber, signUserUp } from '../../store/signUp/SignUp'; 
+import { updatePhoneNumber, signUserUp, addFormInfo } from '../../store/signUp/SignUp'; 
 import { colors } from '../../Colors'
 
 class PhoneNumber extends Component {
   constructor(){
     super();
     this.state = {
-      errorMessage: ''
+      errorMessage: '',
+      loading: false
     }
     this.onButtonPress = this.onButtonPress.bind(this);
   }
@@ -19,6 +20,19 @@ class PhoneNumber extends Component {
   async onButtonPress() {
     // if (!allNumbersRegEx(this.props.phoneNumber) || this.props.phoneNumber.length < 10) return this.setState({errorMessage: 'Please Enter Valid Phone Number '});
     console.log('how is the redux store doing', this.props);
+    console.log('addFormInfo', this.props.addFormInfo())
+
+    // this.setState({ loading: true });
+    this.props.addFormInfo()
+      .then(() => {
+        console.log('saved');
+        // switch scenes
+        // this.setState({ loading: false });
+      })
+      .catch((err) => {
+        console.log(err);
+        // this.setState({ loading: false });
+      })
   }
 
   render() {
@@ -85,7 +99,8 @@ export default connect(
   }),
   {
     updatePhoneNumber,
-    signUserUp
+    signUserUp,
+    addFormInfo
   }
 )(PhoneNumber);
 

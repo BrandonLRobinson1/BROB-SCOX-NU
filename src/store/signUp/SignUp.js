@@ -52,17 +52,37 @@ export const signUserUp = passWord => (dispatch, getState) => {
     const {
       signUp: {
         SignUp: {
-          firstName,
-          lastName,
-          zipCode,
           email,
-          phoneNumber,
           password
         }
       }
     } = getState();
 
    return firebase.auth().createUserWithEmailAndPassword(email.toLowerCase(), password); // use return otherwise it will try to regulate password length
+};
+
+export const addFormInfo = () => (dispatch, getState) => {
+  const { currentUser } = firebase.auth();
+  const {
+    signUp: {
+      SignUp: {
+        firstName,
+        lastName,
+        zipCode,
+        phoneNumber,
+      }
+    }
+  } = getState();
+
+  // console.log('thunk hit');
+  // console.log('firebase.auth', firebase.auth());
+  // console.log('firebase database',  firebase.database());
+  // console.log('firebase ref', firebase.database().ref());
+  // console.log('current user', currentUser);
+
+  // TODO: SWITCH IT OFF TEST DATA FOLDER IN FIREBASE
+  return firebase.database().ref(`/users/${currentUser.uid}/testAccounts`)
+    .push({ firstName, lastName, zipCode, phoneNumber });
 };
 
 
@@ -74,15 +94,3 @@ export const clearAll = () => (dispatch, getState) => {
   dispatch(updateZipCode(null));
   dispatch(updateEmail(null));
 };
-
-// console.log('firebase.auth', firebase.auth)
-  // // TODO: SWITCH IT OFF TEST DATA FOLDER IN FIREBASE
-  // return firebase.database().ref(`/users/${currentUser.uid}/testAccounts`)
-  //   .push({ firstName, lastName, zipCode, phoneNumber })
-  //   .then(() => Actions.pop()) //prevents double stacking in scene
-  //   .then(() => {
-  //     dispatch(clearAll()) // clears input
-      
-  //     Actions.somewhere()
-  //   })
-  //   .catch(err => console.error(err))
