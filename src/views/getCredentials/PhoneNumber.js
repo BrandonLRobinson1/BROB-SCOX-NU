@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { TextInput, View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Button, CardSection, Card, Input } from '../../common';
+import { Button, CardSection, Card, Input, EnterPhone } from '../../common';
 import { allNumbersRegEx } from '../../helpers/helpersFunctions';
-import { updatePhoneNumber, clearAll, addFormInfo } from '../../store/signUp/SignUp'; 
+import { updatePhoneNumber, clearAll, addFormInfo } from '../../store/signUp/SignUp';
 import { colors } from '../../Colors'
 
 class PhoneNumber extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       errorMessage: '',
-      loading: false
+      loading: false,
+      phoneNumber1: '',
+      phoneNumber2: '',
+      phoneNumber3: ''
     }
     this.onButtonPress = this.onButtonPress.bind(this);
+    this.textInputRender = this.textInputRender.bind(this);
   }
 
   async onButtonPress() {
+    const { phoneNumber1, phoneNumber2, phoneNumber3 } = this.state;
+    const number = `${phoneNumber1}${phoneNumber2}${phoneNumber3}`;
     // if (!allNumbersRegEx(this.props.phoneNumber) || this.props.phoneNumber.length < 10) return this.setState({errorMessage: 'Please Enter Valid Phone Number '});
+    if (!allNumbersRegEx(number) || number.length < 10) return this.setState({errorMessage: 'Please Enter Valid Phone Number '});
+  
+    await this.props.updatePhoneNumber(`${phoneNumber1}${phoneNumber2}${phoneNumber3}`);
+    
     this.setState({ loading: true });
     this.props.addFormInfo()
       .then(() => {
@@ -32,8 +42,32 @@ class PhoneNumber extends Component {
       });
   }
 
+  textInputRender(maxLength, placeholder, stateNum) {
+    const { inputStyle } = styles;
+    const setStateVar = `phoneNumber${stateNum}`;
+    const valueVar = this.state[`phoneNumber${stateNum}`];
+
+    return (
+      <TextInput
+        maxLength={maxLength}
+        keyboardType="numeric"
+        placeholder={placeholder}
+        autoCorrect={false}
+        style={inputStyle}
+        value={valueVar}
+        onChangeText={text => {
+          this.setState({
+            errorMessage: "",
+            [setStateVar]: text,
+          });
+          console.log('valueVar', valueVar)
+        }}
+      />
+    )
+  }
+
   render() {
-    const { circle, circleContainer, circleSelected, errorText } = styles;
+    const { circle, circleContainer, circleSelected, errorText, containerStyle, labelStyle } = styles;
     return (
       <Card>
 
@@ -42,19 +76,17 @@ class PhoneNumber extends Component {
           <View style={circle} />
           <View style={circleSelected} />
         </View>
-
+       
         <CardSection>
-          <Input
-            label="Phone Num"
-            placeholder="Phone Number"
-            value={this.props.phoneNumber}
-            onChangeText={text => {
-              this.setState({errorMessage: ""});
-              this.props.updatePhoneNumber(text);
-            }}
-            keyboardType={"numeric"}
-            maxLength={10}
-          />
+          <View style={containerStyle}>
+            <Text style={labelStyle}>Phone Number</Text>
+            <Text>(</Text>
+            {this.textInputRender(3, '555', '1')}
+            <Text>)</Text>
+            {this.textInputRender(3, '555', '2')}
+            <Text>-</Text>
+            {this.textInputRender(4, '5555', '3')}
+          </View>
         </CardSection>
 
         <CardSection>
@@ -67,10 +99,10 @@ class PhoneNumber extends Component {
         <CardSection>
           <Button
             buttonText="Verify by Email"
-            onPress={this.onButtonPress}
+            onPress={() => this.onButtonPress}
           />
         </CardSection>
-        
+
         <CardSection>
           <Text style={errorText}>
             {this.state.errorMessage}
@@ -101,7 +133,7 @@ export default connect(
   }
 )(PhoneNumber);
 
-const { NU_Red , NU_Blue, NU_White, NU_Grey } = colors
+const { NU_Red, NU_Blue, NU_White, NU_Grey, NU_Black } = colors
 
 const styles = StyleSheet.create({
   circle: {
@@ -111,7 +143,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     margin: 5
   },
-  circleSelected:{
+  circleSelected: {
     height: 12,
     width: 12,
     backgroundColor: NU_Red,
@@ -132,6 +164,28 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     textAlign: 'center'
+  },
+
+  inputStyle: {
+    color: NU_Black,
+    paddingRight: 5,
+    paddingLeft: 5,
+    fontSize: 18,
+    lineHeight: 23,
+    flex: 1,
+    // backgroundColor: 'blue',
+    textAlign: 'center'
+  },
+  labelStyle: {
+    fontSize: 18,
+    paddingLeft: 20,
+    flex: 3
+  },
+  containerStyle: {
+    height: 40,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
   }
 });
 

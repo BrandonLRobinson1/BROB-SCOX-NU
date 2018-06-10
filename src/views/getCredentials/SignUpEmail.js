@@ -63,7 +63,7 @@ class SignUp extends Component {
     return (
       <Button
         buttonText="Submit"
-        onPress={this.onButtonPress}
+        onPress={() => this.onButtonPress()}
       />
     )
   }

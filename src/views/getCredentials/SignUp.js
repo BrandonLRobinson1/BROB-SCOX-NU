@@ -75,7 +75,7 @@ class SignUp extends Component {
         <CardSection>
           <Button
             buttonText="Next"
-            onPress={this.onButtonPress}
+            onPress={() => this.onButtonPress()}
           />
         </CardSection>
         

@@ -12,6 +12,7 @@ const RouterComponent = () => (
     <Scene key="root" hideNavBar>
 
     <Scene key="getCredentials">
+    {/*
       <Scene
         key="getCredentials"
         component={GetCredentials}
@@ -19,18 +20,18 @@ const RouterComponent = () => (
         hideNavBar
         initial
       />
-    {/*
+      <Scene
+      key="SignUp"
+      component={SignUp}
+      title="Welcome to NU"
+      init={false}
+      />
+      <Scene
+      key="Email and Password"
+      component={SignUpEmail}
+      title="Email and Password"
+      />
     */}
-      <Scene
-        key="SignUp"
-        component={SignUp}
-        title="Welcome to NU"
-      />
-      <Scene
-        key="Email and Password"
-        component={SignUpEmail}
-        title="Email and Password"
-      />
       <Scene
         key="Phone Number"
         component={PhoneNumber}
@@ -43,6 +44,7 @@ const RouterComponent = () => (
 );
 
 export default RouterComponent;
+
 
 // <Scene
 // key="credentials"
