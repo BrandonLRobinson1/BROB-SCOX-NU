@@ -25,7 +25,6 @@ class SignUp extends Component {
 
   async onButtonPress() {
     const { pw1, pw2, clearTextOnFocus, useSecondPassword } = this.state;
-
     // if (!emailRegEx(this.props.email)) return this.setState({errorMessage: 'The email address is badly formatted.'});
     // if (pw1.length < 7) return this.setState({errorMessage: 'Password must be at least 7 characters'});
     // if (!specialCharacterValidation(pw1)) return this.setState({errorMessage: 'Password must contain at least one special character'});
@@ -38,7 +37,6 @@ class SignUp extends Component {
     this.props.updatePassword(`findout how to encrypt in front end ${pw1}`);
 
     this.setState({ loading: true });
-
     await this.props.signUserUp()
       .then(() => {
         this.setState({
@@ -47,7 +45,6 @@ class SignUp extends Component {
         });
         this.props.updatePassword(null);
         Actions["Phone Number"]();    
-        console.log('verify it all', this.props);
         this.setState({ loading: false });
       })
       .catch( (err) => {

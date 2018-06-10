@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-class Button extends Component {
-  // state = {}
-
-  render () {
-    const { buttonStyle, buttonText } = styles;
-    return (
-      <TouchableOpacity onPress={ this.props.onPress } style={buttonStyle}>
-        <Text style={buttonText}>
-          {this.props.buttonText}
-        </Text>
-      </TouchableOpacity>
-    )
-  }
+const Button = ({ onPress, buttonText }) => {
+  const { buttonStyle, buttonTextStyle } = styles;
+  return (
+    <TouchableOpacity onPress={() => onPress()} style={buttonStyle}>
+      <Text style={buttonTextStyle}>
+        {buttonText}
+      </Text>
+    </TouchableOpacity>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -27,7 +23,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5
     },
-  buttonText: {
+  buttonTextStyle: {
     color: 'blue',
     fontSize: 16,
     fontWeight: '600',

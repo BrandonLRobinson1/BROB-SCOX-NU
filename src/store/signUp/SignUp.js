@@ -74,11 +74,10 @@ export const addFormInfo = () => (dispatch, getState) => {
     }
   } = getState();
 
-  // console.log('thunk hit');
-  // console.log('firebase.auth', firebase.auth());
-  // console.log('firebase database',  firebase.database());
-  // console.log('firebase ref', firebase.database().ref());
-  // console.log('current user', currentUser);
+  console.log('firebase.auth', firebase.auth());
+  console.log('firebase database',  firebase.database());
+  console.log('firebase ref', firebase.database().ref());
+  console.log('current user', currentUser);
 
   // TODO: SWITCH IT OFF TEST DATA FOLDER IN FIREBASE
   return firebase.database().ref(`/users/${currentUser.uid}/testAccounts`)
@@ -94,3 +93,14 @@ export const clearAll = () => (dispatch, getState) => {
   dispatch(updateZipCode(null));
   dispatch(updateEmail(null));
 };
+
+// export const employeesFetch = () => {
+//   const { currentUser } = firebase.auth();
+//   return (dispatch) => {
+//     firebase.database().ref(`/users/${currentUser.uid}/employees`)
+//       .on('value', snapshot => {
+//         console.log('cha ching ... payload', snapshot)
+//         dispatch({ type: EMPLOYEES_FETCH_SUCCESS, payload: snapshot.val() })
+//       })
+//   }
+// }
