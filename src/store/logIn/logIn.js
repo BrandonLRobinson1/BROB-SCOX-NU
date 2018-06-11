@@ -23,16 +23,17 @@ export default handleActions({
 }, defaultState);
 
 export const logUserIn = () => (dispatch, getState) => {
+  // const { currentUser } = firebase.auth();
   const {
     logIn: {
-      LogIn: {
+      logIn: {
         email,
         password
       }
     }
   } = getState();
 
-  console.log('email, password ', email, password)
-  //  return firebase.auth().createUserWithEmailAndPassword(email.toLowerCase(), password); // use return otherwise it will try to regulate password length
+  console.log('email, password ', email, password);
+  return firebase.auth().signInWithEmailAndPassword(email.toLowerCase(), password);
 };
 

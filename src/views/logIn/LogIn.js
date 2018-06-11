@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Button, CardSection, Card, Input, Spinner } from '../../common';
-import { updateLogInEmail, updateLogInPassword } from '../../store/logIn/logIn'; 
+import { updateLogInEmail, updateLogInPassword, logUserIn } from '../../store/logIn/logIn'; 
 import { emailRegEx, specialCharacterValidation } from '../../helpers/helpersFunctions';
 import { colors } from '../../Colors';
 
@@ -21,23 +21,22 @@ class LogIn extends Component {
   }
 
   async onButtonPress() {
-    const { password, clearTextOnFocus, useSecondPassword } = this.state;
+    const { password, clearTextOnFocus } = this.state;
     if (!emailRegEx(this.props.email)) return this.setState({errorMessage: 'The email address is badly formatted.'});
-    if (password.length < 7) return this.setState({errorMessage: 'Password must be at least 7 characters'});
-    if (!specialCharacterValidation(password)) return this.setState({errorMessage: 'Password must contain at least one special character'});
     
     this.props.updateLogInPassword(`findout how to encrypt in front end ${password}`);
 
     this.setState({ loading: true });
+
     await this.props.logUserIn()
       .then(() => {
         this.setState({
-          password: '',
-          pw2: ''
+          password: ''
         });
         this.props.updateLogInPassword(null);
-        Actions["Phone Number"]();    
+        // Actions["Phone Number"]();    
         this.setState({ loading: false });
+        console.log('logged in');
       })
       .catch( (err) => {
         console.log('email sign in error', err);
@@ -46,6 +45,7 @@ class LogIn extends Component {
           clearTextOnFocus: true,
           loading: false
         });
+        console.log('not logged in');        
       })
   }
 
@@ -118,7 +118,8 @@ export default connect(
   }),
   {
     updateLogInEmail,
-    updateLogInPassword
+    updateLogInPassword,
+    logUserIn
   }
 )(LogIn);
 
