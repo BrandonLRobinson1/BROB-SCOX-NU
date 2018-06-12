@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Button, CardSection, Card } from '../../common';
 // import { updateFirstName, updateLastName, updateZipCode } from '../../store/signUp/SignUp'; 
-
 import { colors } from '../../Colors';
 
-class Validate extends Component {
+class Home extends Component {
   constructor(){
     super();
     this.state = {
-      errorMessage: ' '
+      errorMessage: ' ',
+      loading: false
     }
     this.onButtonPress = this.onButtonPress.bind(this);
   }
@@ -26,13 +26,13 @@ class Validate extends Component {
       <Card>
 
         <View style={circleContainer}>
-          <Text>Validate text</Text>
+          <Text>Home text</Text>
         </View>
 
         <CardSection>
           <Button
-            buttonText="Next"
-            onPress={() => Actions.tabbar()}
+            buttonText="home"
+            onPress={() => Actions.Tab()}
           />
         </CardSection>
 
@@ -52,7 +52,7 @@ export default connect(
     // updateLastName,
     // updateZipCode
   }
-)(Validate);
+)(Home);
 
 const { NU_Red , NU_Blue, NU_White, NU_Grey } = colors
 
