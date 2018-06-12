@@ -44,7 +44,7 @@ class SignUp extends Component {
           pw2: ''
         });
         this.props.updatePassword(null);
-        Actions["Phone Number"]();    
+        Actions.SignUp();    
         this.setState({ loading: false });
       })
       .catch( (err) => {
@@ -75,8 +75,8 @@ class SignUp extends Component {
       <Card>
 
         <View style={circleContainer}>
-          <View style={circle} />
           <View style={circleSelected} />
+          <View style={circle} />
           <View style={circle} />
         </View>
 

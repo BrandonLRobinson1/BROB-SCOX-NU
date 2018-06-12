@@ -3,17 +3,21 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 import SignUp from './src/views/getCredentials/SignUp';
 import PhoneNumber from './src/views/getCredentials/PhoneNumber';
 import SignUpEmail from './src/views/getCredentials/SignUpEmail';
+import LogIn from './src/views/getCredentials/LogIn';
 import GetCredentials from './src/views/getCredentials/GetCredentials';
-
-import LogIn from './src/views/logIn/LogIn';
+// import LogIn from './src/views/logIn/LogIn';
 
 import CredentialsRouter from './src/views/getCredentials/index';
 
+// unnest all log in screens
+// conditionally render this page in sceens with a redux store that has defaults
+// add tabs for the rest of the views
+{/*initial needs to be set to if logged in is true for this and the tabs*/}
+
 const RouterComponent = () => (
   <Router>
-    <Scene key="root" hideNavBar>
-
-    <Scene key="getCredentials">
+    <Scene key="root">
+    
       <Scene
         key="getCredentials"
         component={GetCredentials}
@@ -21,41 +25,37 @@ const RouterComponent = () => (
         hideNavBar
         initial
       />
-      {/*
-      */}
+      <Scene
+        key="Email and Password"
+        component={SignUpEmail}
+        title="Create Account"
+        backTitle=" "
+      />
       <Scene
         key="SignUp"
         component={SignUp}
         title="Welcome to NU"
-        init={false}
-      />
-      <Scene
-        key="Email and Password"
-        component={SignUpEmail}
-        title="Email and Password"
+        backTitle=" "
+        type="reset"
       />
       <Scene
         key="Phone Number"
         component={PhoneNumber}
         title="Phone Number"
+        backTitle=" "
       />
-    </Scene>
-
-    <Scene key="logIn">
       <Scene
-        key="Log In"
+        key="logIn"
         component={LogIn}
         title="Please Login"
-        initial
+        backTitle=" "
       />      
-    </Scene>
      
     </Scene> 
   </Router>
 );
 
 export default RouterComponent;
-
 
 // <Scene
 // key="credentials"

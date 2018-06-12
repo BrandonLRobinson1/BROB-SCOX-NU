@@ -31,7 +31,7 @@ class GetCredentials extends Component {
             <CardSection>
               <Button
                 buttonText="Sign Up"
-                onPress={() => Actions.SignUp()}
+                onPress={() => Actions["Email and Password"]()}
               />
             </CardSection>
           </View>

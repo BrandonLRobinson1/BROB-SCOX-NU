@@ -1,6 +1,6 @@
 export const colors = {
   NU_Red: 'darkred',
-  NU_Blue: 'blue',
+  NU_Blue: 'green',
   NU_White: 'white',
   NU_Grey: 'lightgrey',
   NU_Black: 'black',

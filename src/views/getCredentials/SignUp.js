@@ -20,7 +20,7 @@ class SignUp extends Component {
     if (!allLettersRegEx(this.props.firstName)) return this.setState({errorMessage: 'Please Enter Valid First Name '});
     if (!allLettersRegEx(this.props.lastName)) return this.setState({errorMessage: 'Please Enter Valid Last Name '});
     if (!allNumbersRegEx(this.props.zipCode)) return this.setState({errorMessage: 'Please Enter Valid Zip Code '});
-    return Actions["Email and Password"]();
+    return Actions["Phone Number"]();
   }
 
   render() {
@@ -29,8 +29,8 @@ class SignUp extends Component {
       <Card>
 
         <View style={circleContainer}>
-          <View style={circleSelected} />
           <View style={circle} />
+          <View style={circleSelected} />
           <View style={circle} />
         </View>
 
