@@ -33,7 +33,7 @@ class PhoneNumber extends Component {
     this.props.addFormInfo()
       .then(() => {
         this.props.clearAll();
-        // switch scenes
+        Actions.Validate();
         this.setState({ loading: false });
       })
       .catch((err) => {

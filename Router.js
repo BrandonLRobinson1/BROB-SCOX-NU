@@ -5,6 +5,7 @@ import PhoneNumber from './src/views/getCredentials/PhoneNumber';
 import SignUpEmail from './src/views/getCredentials/SignUpEmail';
 import LogIn from './src/views/getCredentials/LogIn';
 import GetCredentials from './src/views/getCredentials/GetCredentials';
+import Validate from './src/views/getCredentials/Validate';
 // import LogIn from './src/views/logIn/LogIn';
 
 import CredentialsRouter from './src/views/getCredentials/index';
@@ -42,6 +43,12 @@ const RouterComponent = () => (
         key="Phone Number"
         component={PhoneNumber}
         title="Phone Number"
+        backTitle=" "
+      />
+      <Scene
+        key="Validate"
+        component={Validate}
+        title="Validate"
         backTitle=" "
       />
       <Scene

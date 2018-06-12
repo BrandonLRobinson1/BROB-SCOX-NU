@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Button, CardSection, Card, Input, SectionSmall } from '../../common';
+import { Button, CardSection, Card, Input } from '../../common';
 import { updateFirstName, updateLastName, updateZipCode } from '../../store/signUp/SignUp'; 
 import { allLettersRegEx , allNumbersRegEx, specialCharacterValidation} from '../../helpers/helpersFunctions';
 import { colors } from '../../Colors';
