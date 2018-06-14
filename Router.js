@@ -11,44 +11,14 @@ import Validate from './src/views/getCredentials/Validate';
 import Home from './src/views/tabs/Home';
 import MapView from './src/views/tabs/MapView';
 
-import CredentialsRouter from './src/views/getCredentials/index';
+// import CredentialsRouter from './src/views/getCredentials/index';
 
-// unnest all log in screens
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 // conditionally render this page in sceens with a redux store that has defaults
-// add tabs for the rest of the views
-{/*initial needs to be set to if logged in is true for this and the tabs*/}
-
-
-// would actually render icons if i had them
-// const tabIcon = () => {
-// // const tabIcon = ({ selected, title }) => {
-//   // var args = Array.from(arguments);
-//   // var args = [...arguments];
-//   // console.log('args', selected, title, arguments.length, args)
-//   console.log('args', this)
-//   // return (<Text style={{ color: selected ? 'red' : 'black'}}>{title}</Text>);
-//   // return (<Text style={{color: this.props.selected ? 'red' :'black'}}>{this.props.title}</Text>);
-//   return null
-// }
-
-// class tabIcon extends React.Component {
-//   render(){
-//       console.log('props', this.props)
-//       return (
-//           <Text style={{color: this.props.selected ? 'red' :'black'}}>{this.props.title}</Text>
-//       );
-//   }
-// }
-
-// const tabIcon = () => {
 const tabIcon = ({ focused, title }) => {
-  // var args = Array.from(arguments);
-  // var args = [...arguments];
-  // console.log('args', selected, title, arguments.length, args)
-  console.log('args', this)
-  return (<Text style={{ color: focused ? 'red' : 'black'}}>{title}</Text>);
-  // return (<Text style={{color: this.props.selected ? 'red' :'black'}}>{this.props.title}</Text>);
-  return null
+  // <Text style={{color: this.props.selected ? 'red' :'black'}}>{this.props.title}</Text>
+  return (<Icon name="rocket" size={30} color="#900" />);
 }
 
 const RouterComponent = () => (
