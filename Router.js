@@ -1,6 +1,7 @@
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import { Text } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import SignUp from './src/views/getCredentials/SignUp';
 import PhoneNumber from './src/views/getCredentials/PhoneNumber';
 import SignUpEmail from './src/views/getCredentials/SignUpEmail';
@@ -11,14 +12,15 @@ import Validate from './src/views/getCredentials/Validate';
 import Home from './src/views/tabs/Home';
 import MapView from './src/views/tabs/MapView';
 
+import {colors } from './src/Colors';
 // import CredentialsRouter from './src/views/getCredentials/index';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+const { NU_Red, NU_Blue, NU_White, NU_Grey, NU_Black, NU_Border_Grey, NU_Card_Border } = colors;
 
 // conditionally render this page in sceens with a redux store that has defaults
 const tabIcon = ({ focused, title }) => {
   // <Text style={{color: this.props.selected ? 'red' :'black'}}>{this.props.title}</Text>
-  return (<Icon name="rocket" size={30} color="#900" />);
+  return (<Icon name="rocket" size={20} color={NU_Red} />);
 }
 
 const RouterComponent = () => (

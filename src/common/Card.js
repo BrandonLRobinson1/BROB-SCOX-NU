@@ -11,7 +11,7 @@ const Card = (props) => {
     );
 };
 
-const { NU_Red, NU_Blue, NU_White, NU_Grey, NU_Black, NU_Border_Grey, NU_Card_Border } = colors
+const { NU_Red, NU_Blue, NU_White, NU_Grey, NU_Black, NU_Border_Grey, NU_Card_Border } = colors;
 
 const styles = StyleSheet.create({
   CardStyles: {
