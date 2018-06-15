@@ -1,7 +1,5 @@
 react-native run-ios --simulator="iPhone 4s"
 
-test
-
 This might be related to https://github.com/facebook/react-native/issues/4968
  1. Clear watchman watches: `watchman watch-del-all`.
   2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.
