@@ -17,9 +17,7 @@ import {colors } from './src/Colors';
 
 const { NU_Red, NU_Blue, NU_White, NU_Grey, NU_Black, NU_Border_Grey, NU_Card_Border } = colors;
 
-// conditionally render this page in sceens with a redux store that has defaults
 const tabIcon = ({ focused, title }) => {
-  // <Text style={{color: this.props.selected ? 'red' :'black'}}>{this.props.title}</Text>
   return (<Icon name="rocket" size={20} color={NU_Red} />);
 }
 
